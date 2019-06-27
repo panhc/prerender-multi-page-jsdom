@@ -1,6 +1,7 @@
 const Server = require('./server')
 const PortFinder = require('portfinder')
 const Puppeteer = require('./puppeteer');
+const JSDOM = require('./jsDomRender');
 
 const PACKAGE_NAME = '[Prerenderer]'
 
@@ -54,6 +55,7 @@ class Prerenderer {
 
         this._server = new Server(this)
         this._renderer = new Puppeteer();
+        // this._renderer = new JSDOM();
 
         if (!this._options) throw new Error(`Options must be defined!`)
 
