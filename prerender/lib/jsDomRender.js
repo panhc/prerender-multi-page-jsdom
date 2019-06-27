@@ -19,11 +19,13 @@ const shim = function (window) {
 const getPageContents = function (window, options, originalRoute) {
     options = options || {}
 
+    console.log(window.document);
+
     return new Promise((resolve, reject) => {
         let int
 
         function captureDocument() {
-            console.log(serializeDocument(window.document));
+            // console.log(serializeDocument(window.document));
             const result = {
                 originalRoute: originalRoute,
                 route: originalRoute,
@@ -86,7 +88,7 @@ class JSDOMRenderer {
                 JSDOM.env({
                     url: `http://127.0.0.1:${rootOptions.server.port}${route}`,
                     features: {
-                        FetchExternalResources: ['script'],
+                        FetchExternalResources: ["script", "link", "img"],
                         ProcessExternalResources: ['script'],
                         SkipExternalResources: false
                     },
@@ -103,7 +105,9 @@ class JSDOMRenderer {
                         })
 
                         shim(window)
-
+                    },
+                    done: (err, window) => {
+                        if (err) return reject(err);
                         resolve(window)
                     }
                 })

@@ -1,11 +1,11 @@
 ## prerender-multi-page-puppeteer
 
 本插件主要用于多页面渲染预渲染模式，主要代码源于@prerenderer/prerenderer（主要支持SPA渲染），经过改造而成。
-使用puppeteer无头浏览器作为预渲染浏览器
+使用JSDOM预渲染
 
 使用方法：
 ```
-const prerender = require('prerender-multi-page-puppeteer');
+const prerender = require('prerender-multi-page-jsdom');
 const path = require('path');
 
 prerender({
