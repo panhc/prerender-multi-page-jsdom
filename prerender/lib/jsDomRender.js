@@ -19,8 +19,6 @@ const shim = function (window) {
 const getPageContents = function (window, options, originalRoute) {
     options = options || {}
 
-    console.log(window.document);
-
     return new Promise((resolve, reject) => {
         let int
 
